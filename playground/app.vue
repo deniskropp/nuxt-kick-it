@@ -1,8 +1,10 @@
 <template>
   <div>
-    Nuxt module playground!
+    Nuxt module playground!!
   </div>
+  <Chat />
 </template>
 
 <script setup>
+
 </script>
