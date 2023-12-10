@@ -15,7 +15,7 @@
                     Content
                 </th>
             </tr>
-            <tr v-for="item in list">
+            <tr v-for="item in list" :key="item._id">
                 <td>
                     <slot name="title" :item="item" />
                 </td>
