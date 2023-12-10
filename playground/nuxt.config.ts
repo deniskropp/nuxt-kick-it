@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-    modules: ['../src/module'],
+    modules: ['@nuxt/content', '../src/module'],
     nuxtKickIt: {},
     devtools: { enabled: false },
     content: {

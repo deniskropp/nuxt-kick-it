@@ -1,8 +1,5 @@
 <template>
-  <div>
-    Nuxt module playground!!
-  </div>
-  <Chat />
+    <NuxtPage />
 </template>
 
 <script setup>
