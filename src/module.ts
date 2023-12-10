@@ -1,4 +1,4 @@
-import { defineNuxtModule, addPlugin, createResolver, addComponent } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions { }
@@ -13,11 +13,18 @@ export default defineNuxtModule<ModuleOptions>({
     setup(options, nuxt) {
         const resolver = createResolver(import.meta.url)
 
+        console.log('nuxt-kick-it module setup...')
+
         // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
         addPlugin(resolver.resolve('./runtime/plugin'))
-        addComponent({
-            name: 'Chat',
-            filePath: './runtime/components/content/Chat.vue'
+
+
+        // Add `components/` directory to the Nuxt application
+        nuxt.hook('components:dirs', (dirs) => {
+            dirs.push({
+                path: resolver.resolve('./runtime/components'),
+                prefix: 'kick'
+            })
         })
     }
 })
