@@ -1,24 +1,15 @@
-<!--
-Get your module up and running quickly.
-
-Find and replace all on all files (CMD+SHIFT+F):
-- Name: Nuxi kicksi
-- Package name: nuxt-kick-it
-- Description: My new Nuxt module (working title 'nuxi-kicksi')
--->
-
-# Nuxi kicksi
+# Nuxt Kick It
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-My new Nuxt module for doing amazing things.
+Nuxt module for generative Nuxt content.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
-<!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/nuxt-kick-it?file=playground%2Fapp.vue) -->
-<!-- - [📖 &nbsp;Documentation](https://example.com) -->
+<!-- - [🏀 Online playground](https://stackblitz.com/github/deniskropp/nuxt-kick-it?file=playground%2Fapp.vue) -->
+<!-- - [📖 &nbsp;Documentation](https://content.nuxt.com) -->
 
 ## Features
 
