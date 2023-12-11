@@ -1,2 +1,4 @@
-title: Kick
-description: Kick Folder
+title: Kick Info Storage
+description: useInfo() source directory
+navigation: false
+layout: info
