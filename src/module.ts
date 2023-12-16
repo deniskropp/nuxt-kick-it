@@ -1,7 +1,11 @@
 import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { join } from 'path'
+import { fileURLToPath } from 'url'
 
 // Module options TypeScript interface definition
-export interface ModuleOptions { }
+export interface ModuleOptions {
+    api_base: string
+}
 
 export default defineNuxtModule<ModuleOptions>({
     meta: {
@@ -9,21 +13,44 @@ export default defineNuxtModule<ModuleOptions>({
         configKey: 'nuxtKickIt'
     },
     // Default configuration options of the Nuxt module
-    defaults: {},
+    defaults: {
+        api_base: 'https://kick.violass.club'
+    },
     setup(options, nuxt) {
         const resolver = createResolver(import.meta.url)
 
         console.log('nuxt-kick-it module setup...')
+        console.log('    options:', options)
+        console.log('    nuxt:', nuxt)
 
         // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
-        addPlugin(resolver.resolve('./runtime/plugin'))
+        const plugin = addPlugin(resolver.resolve('./runtime/plugin'))
+
+        console.log('    plugin:', plugin)
 
 
-        // Add `components/` directory to the Nuxt application
+        const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
+
+        // Register composables
+        nuxt.hook('nitro:config', (nitroConfig) => {
+            if (!nitroConfig.imports) {
+                nitroConfig.imports = {
+                    imports: [],
+                }
+            }
+            nitroConfig.imports.imports.push({
+                name: 'useKick',
+                as: 'useKick',
+                from: join(runtimeDir, 'composables/kick'),
+            })
+        })
+
+        // Register components
         nuxt.hook('components:dirs', (dirs) => {
             dirs.push({
-                path: resolver.resolve('./runtime/components'),
-                prefix: 'kick'
+                path: join(runtimeDir, 'components'),
+                pattern: '**/*.vue',
+                pathPrefix: false,
             })
         })
     }

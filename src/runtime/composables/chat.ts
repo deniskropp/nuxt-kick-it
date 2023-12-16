@@ -5,7 +5,7 @@ import { kickIt } from '../lib/kick'
 import { useInfo } from './info'
 
 export function useChat(constants?: any) {
-    const { page } = {}//useContent()
+    const { page } = useContent()
     const { body } = unref(page)
 
     // Context

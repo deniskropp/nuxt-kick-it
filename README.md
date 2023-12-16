@@ -5,7 +5,8 @@
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-Nuxt module for generative Nuxt content.
+Nuxt Kick It contains generative ARTIFICIAL intelligence for Nuxt Content
+based Vue apps (docs).
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
 <!-- - [🏀 Online playground](https://stackblitz.com/github/deniskropp/nuxt-kick-it?file=playground%2Fapp.vue) -->
