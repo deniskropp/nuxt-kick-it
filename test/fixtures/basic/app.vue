@@ -1,5 +1,5 @@
 <template>
-  <div>basic</div>
+    <KickItTest1 />
 </template>
 
 <script setup>
