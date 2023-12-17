@@ -1,4 +1,4 @@
-import { defineNuxtModule, addComponent, addComponentsDir, addImportsDir, addPlugin, createResolver, addLayout, addTemplate } from '@nuxt/kit'
+import { defineNuxtModule, addComponentsDir, addImportsDir, addPlugin, createResolver, addLayout } from '@nuxt/kit'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
@@ -50,6 +50,10 @@ export default defineNuxtModule<ModuleOptions>({
 
         addImportsDir([
             resolve(runtimeDir, 'composables')
+        ])
+
+        addImportsDir([
+            resolve(runtimeDir, 'lib')
         ])
 
 
