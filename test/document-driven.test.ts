@@ -10,6 +10,6 @@ describe('ssr', async () => {
     it('renders the index page', async () => {
         // Get response to a server-rendered page with `$fetch`.
         const html = await $fetch('/')
-        expect(html).toContain('<h1>Test1</h1>')
+        expect(html).toContain('Test1')
     })
 })

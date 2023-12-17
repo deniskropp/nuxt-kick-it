@@ -1,50 +1,78 @@
 lockfileVersion: '6.0'
 
-dependencies:
-  '@nuxt/content':
-    specifier: ^2.9.0
-    version: 2.9.0(nuxt@3.8.2)(rollup@3.29.4)(vue@3.3.11)
-  '@nuxt/kit':
-    specifier: ^3.8.2
-    version: 3.8.2(rollup@3.29.4)
-  '@nuxtjs/mdc':
-    specifier: ^0.2.9
-    version: 0.2.9(rollup@3.29.4)
-  axios:
-    specifier: ^1.6.2
-    version: 1.6.2
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
-devDependencies:
-  '@nuxt/devtools':
-    specifier: latest
-    version: 1.0.6(nuxt@3.8.2)(rollup@3.29.4)(vite@5.0.7)
-  '@nuxt/eslint-config':
-    specifier: ^0.2.0
-    version: 0.2.0(eslint@8.55.0)
-  '@nuxt/module-builder':
-    specifier: ^0.5.4
-    version: 0.5.4(@nuxt/kit@3.8.2)(nuxi@3.10.0)(typescript@5.3.3)
-  '@nuxt/schema':
-    specifier: ^3.8.2
-    version: 3.8.2(rollup@3.29.4)
-  '@nuxt/test-utils':
-    specifier: ^3.8.1
-    version: 3.8.1(rollup@3.29.4)(vitest@0.33.0)(vue@3.3.11)
-  '@types/node':
-    specifier: ^20.9.3
-    version: 20.10.4
-  changelogen:
-    specifier: ^0.5.5
-    version: 0.5.5
-  eslint:
-    specifier: ^8.54.0
-    version: 8.55.0
-  nuxt:
-    specifier: ^3.8.2
-    version: 3.8.2(@types/node@20.10.4)(eslint@8.55.0)(rollup@3.29.4)(typescript@5.3.3)(vite@5.0.7)
-  vitest:
-    specifier: ^0.33.0
-    version: 0.33.0
+importers:
+
+  .:
+    dependencies:
+      '@nuxt/content':
+        specifier: ^2.9.0
+        version: 2.9.0(nuxt@3.8.2)(rollup@3.29.4)(vue@3.3.11)
+      '@nuxt/kit':
+        specifier: ^3.8.2
+        version: 3.8.2(rollup@3.29.4)
+      '@nuxtjs/mdc':
+        specifier: ^0.2.9
+        version: 0.2.9(rollup@3.29.4)
+      axios:
+        specifier: ^1.6.2
+        version: 1.6.2
+    devDependencies:
+      '@nuxt/devtools':
+        specifier: latest
+        version: 1.0.6(nuxt@3.8.2)(rollup@3.29.4)(vite@5.0.7)
+      '@nuxt/eslint-config':
+        specifier: ^0.2.0
+        version: 0.2.0(eslint@8.55.0)
+      '@nuxt/module-builder':
+        specifier: ^0.5.4
+        version: 0.5.4(@nuxt/kit@3.8.2)(nuxi@3.10.0)(typescript@5.3.3)
+      '@nuxt/schema':
+        specifier: ^3.8.2
+        version: 3.8.2(rollup@3.29.4)
+      '@nuxt/test-utils':
+        specifier: ^3.8.1
+        version: 3.8.1(rollup@3.29.4)(vitest@0.33.0)(vue@3.3.11)
+      '@types/node':
+        specifier: ^20.9.3
+        version: 20.10.4
+      changelogen:
+        specifier: ^0.5.5
+        version: 0.5.5
+      eslint:
+        specifier: ^8.54.0
+        version: 8.55.0
+      nuxt:
+        specifier: ^3.8.2
+        version: 3.8.2(@types/node@20.10.4)(eslint@8.55.0)(rollup@3.29.4)(typescript@5.3.3)(vite@5.0.7)
+      vitest:
+        specifier: ^0.33.0
+        version: 0.33.0
+
+  playground:
+    dependencies:
+      '@nuxt/content':
+        specifier: ^2.9.0
+        version: 2.9.0(nuxt@3.8.2)(rollup@3.29.4)(vue@3.3.11)
+      '@types/vue':
+        specifier: ^2.0.0
+        version: 2.0.0(typescript@5.3.3)
+    devDependencies:
+      '@nuxt/devtools':
+        specifier: ^1.0.5
+        version: 1.0.6(nuxt@3.8.2)(rollup@3.29.4)(vite@5.0.7)
+      eslint:
+        specifier: ^8.55.0
+        version: 8.55.0
+      eslint-plugin-vue:
+        specifier: ^9.19.2
+        version: 9.19.2(eslint@8.55.0)
+      nuxt:
+        specifier: latest
+        version: 3.8.2(@types/node@20.10.4)(eslint@8.55.0)(rollup@3.29.4)(typescript@5.3.3)(vite@5.0.7)
 
 packages:
 
@@ -1978,6 +2006,15 @@ packages:
 
   /@types/unist@3.0.2:
     resolution: {integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==}
+    dev: false
+
+  /@types/vue@2.0.0(typescript@5.3.3):
+    resolution: {integrity: sha512-WDElkBv/o4lVwu6wYHB06AXs4Xo2fwDjJUpvPRc1QQdzkUSiGFjrYuSCy8raxLE5FObgKq8ND7R5gSZTFLK60w==}
+    deprecated: This is a stub types definition for vuejs (https://github.com/vuejs/vue). vuejs provides its own type definitions, so you don't need @types/vue installed!
+    dependencies:
+      vue: 3.3.11(typescript@5.3.3)
+    transitivePeerDependencies:
+      - typescript
     dev: false
 
   /@types/web-bluetooth@0.0.20:
@@ -8142,7 +8179,3 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

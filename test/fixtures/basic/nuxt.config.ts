@@ -1,8 +1,6 @@
 export default defineNuxtConfig({
-    extends: [
-        '@nuxtjs/mdc'
-    ],
     modules: [
+        '@nuxtjs/mdc',
         '../../../src/module'
     ]
 })
