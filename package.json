@@ -30,6 +30,7 @@
   "dependencies": {
     "@nuxt/content": "^2.9.0",
     "@nuxt/kit": "^3.8.2",
+    "@nuxtjs/mdc": "^0.2.9",
     "axios": "^1.6.2"
   },
   "devDependencies": {
