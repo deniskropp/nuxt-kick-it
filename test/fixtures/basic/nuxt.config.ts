@@ -1,7 +1,5 @@
-import nuxtKickModule from '../../../src/module'
-
 export default defineNuxtConfig({
     modules: [
-        nuxtKickModule
+        '../../../src/module'
     ]
 })
