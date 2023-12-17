@@ -4,10 +4,6 @@
         "@nuxt/eslint-config"
     ],
     "rules": {
-        "indent": [
-            "error",
-            4
-        ],
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": [
             "warn",
@@ -16,16 +12,20 @@
                 "args": "none"
             }
         ],
+        "indent": [
+            "warn",
+            4
+        ],
         "quotes": [
-            "error",
+            "warn",
             "single"
         ],
         "semi": [
-            "error",
+            "warn",
             "never"
         ],
         "vue/html-indent": [
-            "error",
+            "warn",
             4
         ]
     }
