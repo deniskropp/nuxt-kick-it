@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.1.1
+
+[compare changes](https://github.com/deniskropp/nuxt-kick-it/compare/v1.0.3...v1.1.1)
+
+### 🏡 Chore
+
+- **release:** V1.0.3 ([9561b05](https://github.com/deniskropp/nuxt-kick-it/commit/9561b05))
+- **release:** V1.0.5 ([16f517c](https://github.com/deniskropp/nuxt-kick-it/commit/16f517c))
+
+### ❤️ Contributors
+
+- Denis Oliver Kropp ([@deniskropp](http://github.com/deniskropp))
+
 ## v1.0.5
 
 [compare changes](https://github.com/deniskropp/nuxt-kick-it/compare/v1.0.3...v1.0.5)
