@@ -1,6 +1,4 @@
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
-import { join } from 'path'
-import { fileURLToPath } from 'url'
+import { defineNuxtModule, addComponentsDir, addImportsDir, addPlugin, createResolver, addLayout } from '@nuxt/kit'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
@@ -16,42 +14,45 @@ export default defineNuxtModule<ModuleOptions>({
     defaults: {
         api_base: 'https://kick.violass.club'
     },
-    setup(options, nuxt) {
-        const resolver = createResolver(import.meta.url)
+    async setup(options, nuxt) {
+        const { resolve } = createResolver(import.meta.url)
 
-        console.log('nuxt-kick-it module setup...')
-        console.log('    options:', options)
-        console.log('    nuxt:', nuxt)
-
-        // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
-        const plugin = addPlugin(resolver.resolve('./runtime/plugin'))
-
-        console.log('    plugin:', plugin)
+        const runtimeDir = resolve('./runtime')
 
 
-        const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
+        // Plugins
 
-        // Register composables
-        nuxt.hook('nitro:config', (nitroConfig) => {
-            if (!nitroConfig.imports) {
-                nitroConfig.imports = {
-                    imports: [],
-                }
-            }
-            nitroConfig.imports.imports.push({
-                name: 'useKick',
-                as: 'useKick',
-                from: join(runtimeDir, 'composables/kick'),
-            })
+        addPlugin({
+            src: resolve(runtimeDir, 'plugin')
         })
 
-        // Register components
-        nuxt.hook('components:dirs', (dirs) => {
-            dirs.push({
-                path: join(runtimeDir, 'components'),
-                pattern: '**/*.vue',
-                pathPrefix: false,
-            })
+
+        // Components
+
+        await addComponentsDir({
+            path: resolve(runtimeDir, 'components', 'content'),
+            pathPrefix: false,
+            prefix: '',
+            global: true,
+            watch: false
         })
+
+        await addComponentsDir({
+            path: resolve(runtimeDir, 'components'),
+            pathPrefix: false,
+            prefix: '',
+            global: false,
+            watch: false
+        })
+
+
+        //addLayout('default', )
+
+
+        // Composables
+
+        addImportsDir([
+            resolve(runtimeDir, 'composables')
+        ])
     }
 })
