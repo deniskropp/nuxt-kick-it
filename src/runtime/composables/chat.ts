@@ -4,20 +4,20 @@ import type { Message } from '../lib/message'
 import { kickIt } from '../lib/kick'
 import { useInfo } from './info'
 
+/**
+ * Generates markdown based on a set of rules and input data.
+ * 
+ * @param constants - An optional object containing key-value pairs of constants to be used in the markdown generation.
+ * @returns An object with two properties: `messages` - An array of `Message` objects representing the context, constants, and chats, and `generate` - A function that generates markdown based on the provided messages and an optional kick API endpoint.
+ */
 export function useChat(constants?: any) {
     const { page } = useContent()
     const { body } = unref(page)
 
-    // Context
     const elements = body.children.filter((c: any) => c.tag !== 'chat' && c.tag !== 'test-chat')
-
-    // Content
     const chats = body.children.filter((c: any) => c.tag === 'chat')
-
-    // Constants
     const entries = Object.entries(constants).filter(e => e[1])
 
-    /// Messages
     const messages: Message[] = [
         {
             role: 'system',
@@ -46,6 +46,13 @@ export function useChat(constants?: any) {
         generate
     }
 
+    /**
+     * Generates markdown based on the provided messages and an optional kick API endpoint.
+     * 
+     * @param messages - An array of `Message` objects representing the context, constants, and chats.
+     * @param kick_api - An optional string representing the kick API endpoint.
+     * @returns A string representing the generated markdown.
+     */
     async function generate(messages: Message[], kick_api?: string) {
         const { data } = await useAsyncData('kick', async () => {
             const info = await useInfo()
