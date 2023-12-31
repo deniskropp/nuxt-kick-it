@@ -3,7 +3,8 @@ export default defineNuxtConfig({
         '@nuxt/content',
         '../../../src/module'
     ],
+    devtools: { enabled: false },
     content: {
         documentDriven: true
-    }
+    },
 })
