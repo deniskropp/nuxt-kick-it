@@ -16,6 +16,7 @@
     "dependencies": {
         "@nuxt/content": "^2.9.0",
         "@types/vue": "^2.0.0",
+        "bardie-ts": "^1.2.0",
         "cohere-ai": "^7.6.1"
     }
 }

@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
     modules: ['@nuxt/content', '../src/module'],
     nuxtKickIt: {},
-    devtools: { enabled: false },
+    devtools: { enabled: true },
     content: {
         documentDriven: true
     }

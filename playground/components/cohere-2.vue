@@ -21,9 +21,13 @@ const cohere = new CohereClient({
             process.stdout.write(chat.text)
         }
     }
-})()
+})
+
+const { markdown, pending, ask, messages, generate } = useKick()
 </script>
 
 <template>
     <slot />
+
+    <pre v-for="(message, index) in messages" :key="index">{{ message.content }}</pre>
 </template>
