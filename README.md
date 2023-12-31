@@ -12,6 +12,10 @@ based Vue apps (docs).
 <!-- - [🏀 Online playground](https://stackblitz.com/github/deniskropp/nuxt-kick-it?file=playground%2Fapp.vue) -->
 <!-- - [📖 &nbsp;Documentation](https://content.nuxt.com) -->
 
+## Demo
+
+Check out the demo at [kick-start.nuxt.space](https://kick-start.nuxt.space).
+
 ## Features
 
 <!-- Highlight some of the features your module provide here -->
