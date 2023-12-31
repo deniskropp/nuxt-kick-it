@@ -22,7 +22,7 @@ export function useChat(constants?: any) {
         {
             role: 'system',
             content: `This is a template to generate markdown according to these rules:
-- Context elements are given by "context:{tag}" serving as auxiliary information, not to be included in the response
+- Context elements are given by "context:{tag}" serving as auxiliary information, never include in generated content
 - Constants are given by "user:{key}" serving as parameters
 - Contents is given by "user" serving as the input data, asking for generated output data
 `
