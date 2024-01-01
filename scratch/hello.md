@@ -1,6 +1,6 @@
 This is a template for document driven content!
 
-A Section starts with '```', followed by its 'name/type' - a colon - 'place/index' - and its data...
+A Section starts with '⫻', followed by its 'name/type' - a colon - 'place/index' - and its data...
     1. 'name' being a keyword or token: ['const','content','context']
     2. 'type' being optional information: format, encoding, component type
     3. data as indicated
@@ -14,38 +14,38 @@ Generate responses according to these rules:
 
 
 
-```context:h1
+⫻context:h1
 About us
 
 
 
-```context:h2
+⫻context:h2
 Me and You
 
 
 
-```context:p
+⫻context:p
 We run our own corporate entity named "Exit" since 2020 with me onboarding ever since.
 
 
 
-```context:h2
+⫻context:h2
 Skills
 
 
 
-```context:ul
+⫻context:ul
 - prompt engineering
 - designing and developing complex software systems using TypeScript and Generative AI (LLMs)
 
 
 
-```const:name
+⫻const:name
 Denis Oliver Kropp
 
 
 
-```content
+⫻content
 Hello, my name is {{ const:name }} and I am a Senior Software Engineer at {{ context:About us.Corporation }}. I have been working here since {{ context:Me.OnBoarding }}.
 
 My primary responsibilities include {{ context:responsibilities }}. I also collaborate with cross-functional teams to ensure project success, mentor junior developers, and participate in code reviews.

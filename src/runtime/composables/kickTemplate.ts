@@ -1,20 +1,20 @@
-import { ref, type Ref } from 'vue'
+import { ref, unref, type Ref } from 'vue'
 import { getItemText, type Item } from '../lib/item'
 import { type Message } from '../lib/message'
 
-type KickTemplateConstant = {
+export type KickTemplateConstant = {
     key: string
     value: string
 }
 
-type KickTemplateContextItem = Item
+export type KickTemplateContextItem = Item
 
-type KickTemplateContent = Item | string
+export type KickTemplateContent = Item | string
 
-type KickTemplateParent = KickTemplate | null
+export type KickTemplateParent = KickTemplate
 
 export interface KickTemplate {
-    parent: Ref<KickTemplateParent>
+    parent?: Ref<KickTemplateParent>
     constants: KickTemplateConstant[]
     context: KickTemplateContextItem[]
     contents: KickTemplateContent[]
@@ -29,24 +29,47 @@ export interface KickTemplate {
  * @param parent the parent kick template
  * @returns the kick template instance
  */
-export function useKickTemplate(parent: KickTemplateParent = null): KickTemplate {
-    const instance = parent ?? {
-        parent: ref(null),
-        constants: [],
-        context: [],
-        contents: []
+export function useKickTemplate(init?: Partial<KickTemplate>): KickTemplate {
+    const instance = {
+        parent: init?.parent,
+        constants: init?.constants ?? [],
+        context: init?.context ?? [],
+        contents: init?.contents ?? [],
+        make: init?.make ?? ((): Message[] => []),
+        makeSingle: init?.makeSingle ?? ((prompt?: string): string => ''),
     }
 
-    if (parent !== null) {
-        instance.parent = ref(parent)
-    }
+    console.log({init, instance})
 
     /**
      * Generate the messages from the template
      * @returns the messages
      */
     const make = (): Message[] => {
-        const messages = [
+        let messages: Message[] = []
+
+        const i2m = (i: KickTemplate): Message[] => ([
+            ...i.context.map(e => ({
+                role: `context:${e.tag ?? ''}`,
+                content: getItemText(e),
+            })),
+            ...i.constants.map(c => ({
+                role: `const:${c.key}`,
+                content: c.value,
+            })),
+            ...i.contents.map(c => ({
+                role: 'content',
+                content: typeof c === 'string' ? c : getItemText(c),
+            }))
+        ])
+
+        for (let i = unref(instance.parent); i; i = unref(i.parent)) {
+            messages = [...i2m(i), ...messages]
+        }
+
+        messages = [...messages, ...i2m(instance)]
+
+        messages.unshift(
             {
                 role: 'system',
                 content: `This is a template for document driven content!
@@ -63,20 +86,8 @@ Generate responses according to these rules:
 3. Contents is given by sections named "content" serving as the input data, asking for generated output data
 `,
             },
-        ]
+        )
 
-        messages.push(...instance.context.map(e => ({
-            role: `context:${e.tag ?? ''}`,
-            content: getItemText(e),
-        })))
-        messages.push(...instance.constants.map(c => ({
-            role: `const:${c.key}`,
-            content: c.value,
-        })))
-        messages.push(...instance.contents.map(c => ({
-            role: 'content',
-            content: typeof c === 'string' ? c : getItemText(c),
-        })))
 
         return messages
     }
@@ -88,8 +99,6 @@ Generate responses according to these rules:
      */
     const makeSingle = (prompt?: string): string => {
         const messages = make()
-
-        //        const prompt = messages.map(m => `⫻${m.role}⫽${m.content}`).join('\n\n\n') //+ '## assistant\n'
 
         if (prompt !== undefined) {
             messages.push({
