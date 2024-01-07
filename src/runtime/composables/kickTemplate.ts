@@ -1,4 +1,4 @@
-import { ref, unref, type Ref } from 'vue'
+import { unref, type Ref } from 'vue'
 import { getItemText, type Item } from '../lib/item'
 import { type Message } from '../lib/message'
 
