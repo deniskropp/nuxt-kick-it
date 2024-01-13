@@ -1,3 +1,5 @@
+import { ref, useChat } from '#imports'
+
 export function useKick(constants: any) {
     const { messages, generate } = useChat(constants)
 
@@ -24,36 +26,3 @@ export function useKick(constants: any) {
         generate
     }
 }
-
-
-/*
-
-    const toc = queryContent({
-        type: 'page',
-    })
-
-    const renderToc = (tree: any[]) => {
-        console.log(tree)
-        let markdown = ''
-
-        for (const node of tree) {
-            if (node.type === 'heading') {
-                if (node.depth === 1) {
-                    markdown += `# ${node.title}\n`
-                } else if (node.depth === 2) {
-                    markdown += `## ${node.title}\n`
-                } else {
-                    markdown += `### ${node.title}\n`
-                }
-            } else {
-                //                markdown += `${node.content}\n`
-                markdown += `${node._path}\n`
-            }
-        }
-
-        return markdown
-    }
-
-    const renderedToc = renderToc(await toc.find())
-
-*/
