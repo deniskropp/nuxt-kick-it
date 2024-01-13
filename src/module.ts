@@ -28,7 +28,7 @@ export default defineNuxtModule<ModuleOptions>({
 
 
         // Components
-
+/*
         await addComponentsDir({
             path: resolve(runtimeDir, 'components', 'content'),
             pathPrefix: false,
@@ -44,7 +44,7 @@ export default defineNuxtModule<ModuleOptions>({
             global: false,
             watch: false
         })
-
+*/
 
         // Composables
 
