@@ -39,8 +39,6 @@ export function useKickTemplate(init?: Partial<KickTemplate>): KickTemplate {
         makeSingle: init?.makeSingle ?? ((prompt?: string): string => ''),
     }
 
-    console.log({init, instance})
-
     /**
      * Generate the messages from the template
      * @returns the messages
