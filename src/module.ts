@@ -55,10 +55,5 @@ export default defineNuxtModule<ModuleOptions>({
         addImportsDir([
             resolve(runtimeDir, 'lib')
         ])
-
-
-        // Layouts
-
-        addLayout({src: resolve(runtimeDir, 'layouts', 'default.vue')})
     }
 })
