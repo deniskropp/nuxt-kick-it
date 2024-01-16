@@ -1,10 +1,14 @@
-export interface Item {
+import * as NC from '@nuxt/content/dist/runtime/types'
+
+// TODO: replace this with ParsedContent
+export interface Item extends NC.MarkdownNode {
     type: string
     tag?: string
     value?: string
     children?: Item[]
 }
 
+// TODO: replace this with ParsedContent
 export function getItemText(item: Item): string {
     const str: string[] = []
 

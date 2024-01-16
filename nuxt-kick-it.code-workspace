@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../nuxt/content"
+		},
+		{
+			"path": "../../nuxtlabs/remark-mdc"
+		},
+		{
+			"path": "../../unifiedjs"
+		}
+	],
+    "settings": {}
+}
