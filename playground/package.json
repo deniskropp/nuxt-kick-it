@@ -1,0 +1,9 @@
+{
+    "name": "playground",
+    "version": "1.0.0",
+    "private": true,
+    "dependencies": {
+        "bardie-ts": "^1.3.4",
+        "cohere-ai": "^7.6.2"
+    }
+}
