@@ -2,30 +2,71 @@ import { unref, type Ref } from 'vue'
 import { getItemText, type Item } from '../lib/item'
 import { type Message } from '../lib/message'
 
+/**
+ * Represents a constant used in a KickTemplate.
+ * @property key - The key of the constant.
+ * @property value - The value of the constant.
+ */
 export type KickTemplateConstant = {
     key: string
     value: string
 }
 
-export type KickTemplateContextItem = Item
+/**
+ * Represents an item in the context of a KickTemplate.
+ * It can be either an Item or a string.
+ */
+export type KickTemplateContextItem = Item | string
 
+/**
+ * Represents the content of a KickTemplate.
+ * It can be either an Item or a string.
+ */
 export type KickTemplateContent = Item | string
 
+/**
+ * Represents the parent KickTemplate of a KickTemplate.
+ */
 export type KickTemplateParent = KickTemplate
 
+/**
+ * Interface for a KickTemplate.
+ */
 export interface KickTemplate {
+    /**
+     * The parent KickTemplate.
+     */
     parent?: Ref<KickTemplateParent>
+    /**
+     * The constants used in the KickTemplate.
+     */
     constants: KickTemplateConstant[]
+    /**
+     * The context items used in the KickTemplate.
+     */
     context: KickTemplateContextItem[]
+    /**
+     * The contents of the KickTemplate.
+     */
     contents: KickTemplateContent[]
 
+    /**
+     * Generate the messages from the template.
+     * @returns The messages generated from the template.
+     */
     make(): Message[]
+
+    /**
+     * Generate a single message from the template.
+     * @param prompt - The prompt to preface the message with.
+     * @returns The generated message.
+     */
     makeSingle(prompt?: string): string
 }
 
 /**
  * A template for document driven content.
- * 
+ *
  * @param parent the parent kick template
  * @returns the kick template instance
  */
@@ -49,7 +90,7 @@ export function useKickTemplate(init?: Partial<KickTemplate>): KickTemplate {
         const i2m = (i: KickTemplate): Message[] => ([
             ...i.context.map(e => ({
                 role: `context:${e.tag ?? ''}`,
-                content: getItemText(e),
+                content: typeof e === 'string' ? e : getItemText(e),
             })),
             ...i.constants.map(c => ({
                 role: `const:${c.key}`,
